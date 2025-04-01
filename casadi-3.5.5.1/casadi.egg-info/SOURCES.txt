@@ -1,0 +1,8 @@
+README.txt
+setup.py
+casadi.egg-info/PKG-INFO
+casadi.egg-info/SOURCES.txt
+casadi.egg-info/dependency_links.txt
+casadi.egg-info/not-zip-safe
+casadi.egg-info/requires.txt
+casadi.egg-info/top_level.txt

@@ -1,0 +1,8 @@
+prefix=/home/fury/fsd/fsd_ws/install
+
+Name: zed_yolo_node
+Description: Description of zed_yolo_node
+Version: 0.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 

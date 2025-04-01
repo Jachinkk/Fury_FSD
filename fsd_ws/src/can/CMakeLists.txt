@@ -16,7 +16,7 @@ find_package(catkin REQUIRED COMPONENTS
 include_directories(
   include
   ${catkin_INCLUDE_DIRS}
-  /home/nvidia/auto  # controlcan.h路径
+  /home/fury/fsd  # controlcan.h路径
 )
 
 # 定义可执行文件
@@ -33,7 +33,7 @@ set_target_properties(can_tx_node PROPERTIES
 # 链接库
 target_link_libraries(can_tx_node
   ${catkin_LIBRARIES}
-  /home/nvidia/auto/libcontrolcan.so
+  /home/fury/fsd/libcontrolcan.so
 )
 
 # 安装规则

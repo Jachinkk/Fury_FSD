@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<package>
+  <name>guiji</name>
+  <version>0.0.1</version>
+  <description>A C++ ROS1 node that performs control and planning tasks</description>
+  <maintainer email="youremail@example.com">Your Name</maintainer>
+  <license>TODO: License</license>
+
+  <!-- 构建工具依赖 -->
+  <buildtool_depend>catkin</buildtool_depend>
+  
+  <!-- 构建依赖 -->
+  <build_depend>roscpp</build_depend>
+  <build_depend>std_msgs</build_depend>
+  <build_depend>eigen3</build_depend>
+  
+  <!-- 运行时依赖 -->
+  <run_depend>roscpp</run_depend>
+  <run_depend>std_msgs</run_depend>
+  <run_depend>eigen3</run_depend>
+  
+  <!-- 第三方库依赖（CasADi和SFML） -->
+  <build_depend>casadi</build_depend>
+  <build_depend>libsfml-dev</build_depend>
+  <run_depend>casadi</run_depend>
+  <run_depend>libsfml-dev</run_depend>
+
+  <export>
+    <!-- ROS1使用catkin构建系统 -->
+  </export>
+</package>
+

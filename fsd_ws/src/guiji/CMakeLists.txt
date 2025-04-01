@@ -53,7 +53,7 @@ install(TARGETS guiji
 
 # 声明catkin包（关键！）
 catkin_package(
-  INCLUDE_DIRS include
+  # INCLUDE_DIRS include
   LIBRARIES guiji
   CATKIN_DEPENDS roscpp std_msgs
 )

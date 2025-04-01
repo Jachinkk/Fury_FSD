@@ -1,0 +1,8 @@
+prefix=/home/fury/fsd/fsd_ws/devel
+
+Name: guiji
+Description: Description of guiji
+Version: 0.0.1
+Cflags: 
+Libs: -L${prefix}/lib -lguiji
+Requires: roscpp std_msgs

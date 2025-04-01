@@ -1,0 +1,8 @@
+prefix=/home/fury/fsd/fsd_ws/devel
+
+Name: can
+Description: Description of can
+Version: 0.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: roscpp std_msgs

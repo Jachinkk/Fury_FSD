@@ -1,0 +1,2 @@
+can:guiji:zed_yolo_node
+-DCATKIN_DEVEL_PREFIX=/home/fury/fsd/fsd_ws/devel -DCMAKE_INSTALL_PREFIX=/home/fury/fsd/fsd_ws/install -G Unix Makefiles

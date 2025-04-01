@@ -12,6 +12,7 @@
 #include <std_msgs/Float64MultiArray.h>
 #include <utility>
 #include <sensor_msgs/PointCloud.h>
+#include <fstream> 
 
 using namespace std;
 using namespace chrono;
@@ -2431,6 +2432,8 @@ public:
     ros::Subscriber zhuitong_subscription_;
     ros::Publisher publisher_kongzhi_;
     ros::Timer timer_;
+
+    ros::Timer shiyan;
     
     std::vector<std::pair<double, double>> l_xy;
     std::vector<std::pair<double, double>> r_xy;
@@ -2449,9 +2452,16 @@ public:
         
         // 定时器：每秒发布一次数据
         timer_ = nh_.createTimer(ros::Duration(0.1), &MyCPlusPlusNode::publisher_data_, this);
-        
+
+        //下面这行只是来验证我的算法，实车测试的时候注释掉
+        shiyan = nh_.createTimer(ros::Duration(0.1), &MyCPlusPlusNode::processDataWrapper, this);
         //ROS_INFO("Trajectory node initialized, waiting for visual data...");
     }
+
+    void processDataWrapper(const ros::TimerEvent &event) {
+        processData();  // 调用原来的无参版本
+    }
+    
 
     void publisher_data_(const ros::TimerEvent&) {
         std_msgs::Float64MultiArray msg_data;
@@ -2500,8 +2510,8 @@ public:
         // auto start = high_resolution_clock::now();
         //     // 这里调用你的处理逻辑，例如构造 zhuitong 对象
             zhuitong z;
-            z.l_xy = l_xy;
-            z.r_xy = r_xy;
+            //z.l_xy = l_xy;
+            //z.r_xy = r_xy;
             // 此处可以继续调用处理函数，比如计算轨迹等
             // 初始化蓝色和红色锁桶数据
         // 初始化蓝色和红色锥桶数据---急弯红色过近处
@@ -2520,21 +2530,21 @@ public:
         // };
 
         // 初始化蓝色和红色锥桶数据2---过弯直线
-        // z.r_xy = {
-        //     {2.37, 20.76}, {0.32, 18.06}, {-1.43, 15.83}, {-3.36, 13.39}, {-5.12, 11.01},
-        //     {-6.83, 8.48}, {-7.25, 5.76}, {-6.31, 3.54}, {-4.58, 2.07}, {-2.46, 1.46},
-        //     {-0.05, 1.62}, {2.66, 1.99}, {8.81, 2.74}, {11.41, 2.12}, {13.35, 0.24},
-        //     {13.91, -2.33}, {13.19, -4.70}, {11.32, -6.41}, {8.84, -7.29}, {-0.78, -10.03},
-        //     {-15.20, -14.14}, {-10.39, -12.77}, {-5.58, -11.40}, {4.03, -8.66}, {5.73, 2.47}
-        // };
+        z.r_xy = {
+            {2.37, 20.76}, {0.32, 18.06}, {-1.43, 15.83}, {-3.36, 13.39}, {-5.12, 11.01},
+            {-6.83, 8.48}, {-7.25, 5.76}, {-6.31, 3.54}, {-4.58, 2.07}, {-2.46, 1.46},
+            {-0.05, 1.62}, {2.66, 1.99}, {8.81, 2.74}, {11.41, 2.12}, {13.35, 0.24},
+            {13.91, -2.33}, {13.19, -4.70}, {11.32, -6.41}, {8.84, -7.29}, {-0.78, -10.03},
+            {-15.20, -14.14}, {-10.39, -12.77}, {-5.58, -11.40}, {4.03, -8.66}, {5.73, 2.47}
+        };
 
-        // z.l_xy = {
-        //     {-4.29, 17.89}, {-6.10, 15.49}, {-8.02, 12.96}, {-9.83, 10.26}, {-10.79, 6.36},
-        //     {-9.79, 2.36}, {-7.78, -0.07}, {-3.05, -1.93}, {-0.09, -1.83}, {2.69, -1.43},
-        //     {5.71, -1.09}, {8.85, -0.74}, {10.39, -1.76}, {9.84, -3.26}, {7.91, -4.01},
-        //     {3.10, -5.37}, {-1.71, -6.74}, {-6.52, -8.11}, {-11.33, -9.48}, {-16.14, -10.85},
-        //     {-5.84, -1.21}
-        // };
+        z.l_xy = {
+            {-4.29, 17.89}, {-6.10, 15.49}, {-8.02, 12.96}, {-9.83, 10.26}, {-10.79, 6.36},
+            {-9.79, 2.36}, {-7.78, -0.07}, {-3.05, -1.93}, {-0.09, -1.83}, {2.69, -1.43},
+            {5.71, -1.09}, {8.85, -0.74}, {10.39, -1.76}, {9.84, -3.26}, {7.91, -4.01},
+            {3.10, -5.37}, {-1.71, -6.74}, {-6.52, -8.11}, {-11.33, -9.48}, {-16.14, -10.85},
+            {-5.84, -1.21}
+        };
 
         // 初始化蓝色和红色锥桶数据3---少点过弯
         // z.r_xy = {
@@ -2616,14 +2626,38 @@ public:
              z.xy = z.l_xy;
  z.xy.insert(z.xy.end(), z.r_xy.begin(), z.r_xy.end());
 
+
+ // 打开文件（以追加模式打开），注意确保路径存在
+ std::string filepath = "/home/fury/fsd/data.txt";  // 修改为你想保存的路径
+ std::ofstream file(filepath, std::ios::app);
+ if (file.is_open()) {
+     file << "---- processData 调用时间: " << ros::Time::now() << " ----\n";
+
+     file << "z.l_xy 数据:\n";
+     for (const auto &pt : z.l_xy) {
+         file << "(" << pt.first << ", " << pt.second << ") ";
+     }
+     file << "\n\n";
+
+     file << "z.r_xy 数据:\n";
+     for (const auto &pt : z.r_xy) {
+         file << "(" << pt.first << ", " << pt.second << ") ";
+     }
+     file << "\n---------------------------------------\n\n";
+
+     file.close();
+ } else {
+     ROS_ERROR("无法打开文件: %s", filepath.c_str());
+ }
+
 //cout<<"z.xy"<<z.xy.size()<<endl;
 //  // 执行每一步并输出
- //z.shaixuan();
+ z.shaixuan();
 
-//  //z.youxiaozhuitong();
+z.youxiaozhuitong();
 //  //z.youxiaozhuitong_tsp();
 
-z.youxiaozhuitong_weizhi();
+//z.youxiaozhuitong_weizhi();
 
 
 // // //  /*auto stop = high_resolution_clock::now();
