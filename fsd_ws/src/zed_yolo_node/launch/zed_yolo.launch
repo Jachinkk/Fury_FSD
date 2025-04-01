@@ -1,0 +1,4 @@
+<launch>
+    <node name="zed_yolo_node" pkg="zed_yolo_node" type="zed_yolo.py" output="screen"/>
+</launch>
+

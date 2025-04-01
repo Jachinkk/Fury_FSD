@@ -1,0 +1,18 @@
+<launch>
+  <!-- 设置环境变量 -->
+  <env name="PYTHONPATH" value="/usr/local/zed/python:$(env PYTHONPATH)" />
+
+
+  <!-- 启动 zed_yolo.py 节点 -->
+  <node pkg="zed_yolo_node" type="zed_yolo.py" name="zed_yolo_node" output="screen" />
+
+  <!-- 启动 guiji 节点 -->
+  <node pkg="guiji" type="guiji" name="guiji_node" output="screen" respawn="true"/>
+
+  <!-- 如果需要启动 can_tx_node，取消下面注释 -->
+
+  <node pkg="can" type="can_tx_node" name="can_tx_node" output="screen" />
+ 
+
+  
+</launch>
