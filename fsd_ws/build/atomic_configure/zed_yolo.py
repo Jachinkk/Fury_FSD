@@ -1,4 +1,4 @@
-#!/home/fury/archiconda3/bin/python3
+#!/home/fury/archiconda3/envs/gvins/bin/python3
 # -*- coding: utf-8 -*-
 # generated from catkin/cmake/template/script.py.in
 # creates a relay to a python script source file, acting as that file.

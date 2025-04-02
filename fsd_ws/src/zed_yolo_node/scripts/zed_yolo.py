@@ -3,7 +3,7 @@
 import rospy
 from std_msgs.msg import Float32, Float64MultiArray
 import sys
-sys.path.insert(0, '/home/fury/zed yolo')  # 根据YOLO代码所在路径进行调整
+sys.path.insert(0, '/home/fury/zed_yolo')  # 根据YOLO代码所在路径进行调整
 import numpy as np
 import torch
 import cv2

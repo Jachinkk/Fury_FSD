@@ -7,4 +7,9 @@
 # new environment variables
 
 # modified environment variables
+export CMAKE_PREFIX_PATH="/home/fury/fsd/fsd_ws/devel:$CMAKE_PREFIX_PATH"
+export LD_LIBRARY_PATH='/opt/ros/noetic/lib:/opt/ros/noetic/lib/aarch64-linux-gnu:/usr/local/cuda/lib64'
+export PATH='/opt/ros/noetic/bin:/home/fury/archiconda3/envs/gvins/bin:/home/fury/.pyenv/plugins/pyenv-virtualenv/shims:/home/fury/.pyenv/shims:/home/fury/.pyenv/bin:/home/fury/archiconda3/bin:/home/fury/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/usr/local/cuda/bin'
 export PWD='/home/fury/fsd/fsd_ws/build'
+export ROSLISP_PACKAGE_DIRECTORIES='/home/fury/fsd/fsd_ws/devel/share/common-lisp'
+export ROS_PACKAGE_PATH="/home/fury/fsd/fsd_ws/src:$ROS_PACKAGE_PATH"
