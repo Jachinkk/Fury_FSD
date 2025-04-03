@@ -70,25 +70,48 @@ def torch_thread(weights, img_size, conf_thres=0.5, iou_thres=0.2, dnn=False, cl
                 if len(det):
                     det[:, :4] = scale_coords(img.shape[2:], det[:, :4], image_net.shape).round()
                     for *xyxy, conf, cls in reversed(det):
-                        label = f"{names[int(cls)]} {conf:.2f}"
+#                         label = f"{names[int(cls)]} {conf:.2f}"
+#                         annotator.box_label(xyxy, label, color=(255, 0, 0))
+
+#                         # 中心点坐标和距离
+#                         cent_x = round((xyxy[0].item() + xyxy[2].item()) / 2)
+#                         cent_y = round((xyxy[1].item() + xyxy[3].item()) / 2)
+
+#                         #print(f"中心点坐标: ({cent_x}, {cent_y})")
+# # 初始化默认距离值
+#                         distance = 0.0  # 默认值
+
+#                         point_cloud_value = point_cloud.get_value(cent_x, cent_y)[1]
+#                         if point_cloud_value[2] > 0.0:
+#                             distance = np.sqrt(point_cloud_value[0] ** 2 + point_cloud_value[1] ** 2 + point_cloud_value[2] ** 2)
+#                             #rospy.loginfo(f"Object distance: {distance}")
+#                             distance_pub.publish(distance)
+
+#                              # 添加到锥桶数据 (使用标志位1表示所有锥桶)
+#                         zhuitong_data.extend([1.0, float(cent_x), float(distance)])
+                        detected_label = names[int(cls)]
+                        label = f"{detected_label} {conf:.2f}"
                         annotator.box_label(xyxy, label, color=(255, 0, 0))
 
-                        # 中心点坐标和距离
+                        # 计算中心点坐标
                         cent_x = round((xyxy[0].item() + xyxy[2].item()) / 2)
                         cent_y = round((xyxy[1].item() + xyxy[3].item()) / 2)
 
-                        #print(f"中心点坐标: ({cent_x}, {cent_y})")
-# 初始化默认距离值
-                        distance = 0.0  # 默认值
+                        # 默认距离值
+                        distance = 0.0
 
                         point_cloud_value = point_cloud.get_value(cent_x, cent_y)[1]
                         if point_cloud_value[2] > 0.0:
                             distance = np.sqrt(point_cloud_value[0] ** 2 + point_cloud_value[1] ** 2 + point_cloud_value[2] ** 2)
-                            #rospy.loginfo(f"Object distance: {distance}")
                             distance_pub.publish(distance)
 
-                             # 添加到锥桶数据 (使用标志位1表示所有锥桶)
-                        zhuitong_data.extend([1.0, float(cent_x), float(distance)])
+                        # 根据标签设置标志位
+                        flag = 1.0  # 默认：red使用1
+                        if detected_label.lower() == "blue":  # 如果标签为blue，则标志位改为2
+                            flag = 2.0
+
+                        # 添加到锥桶数据
+                        zhuitong_data.extend([flag, float(cent_x), float(distance)])
 
                          # 发布锥桶坐标数据(新增功能)
             if zhuitong_data:
