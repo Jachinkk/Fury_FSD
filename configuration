@@ -1,1 +1,11 @@
 # 配置环境说明
+轨迹规划库
+需要库casadi，sfml，ipopt
+安装顺序gfortran  -》  ipopt   -》casadi
+其中gfortran是安装ipopt与casadi联合内容的前提
+Gfortran与ipopt直接官方版	，ps：sfml也是
+Casadi用安装包
+
+解压安装包后，配置casadi命令
+cmake -DWITH_IPOPT=ON -DIPOPT_INCLUDE_DIR=/usr/include/coin -DIPOPT_LIBRARY=/use/lib/x86_64-linux-gnu/libipopt.so ..
+其中，地址实际上是ipopt安装位置，不同agx会安装在不同位置，要注意
