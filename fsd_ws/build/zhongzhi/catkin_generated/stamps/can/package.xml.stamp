@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<package>
+  <name>zhongzhi</name>
+  <version>0.0.0</version>
+  <description>The zhongzhi package</description>
+
+  <maintainer email="you@example.com">Your Name</maintainer>
+  <license>Apache-2.0</license>
+
+  <!-- 构建工具 -->
+  <buildtool_depend>catkin</buildtool_depend>
+
+  <!-- 构建依赖 -->
+  <build_depend>roscpp</build_depend>
+  <build_depend>std_msgs</build_depend>
+
+  <!-- 运行时依赖 -->
+  <run_depend>roscpp</run_depend>
+  <run_depend>std_msgs</run_depend>
+  <run_depend>libcontrolcan</run_depend>
+</package>
+

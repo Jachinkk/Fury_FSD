@@ -111,7 +111,7 @@ def torch_thread(weights, img_size, conf_thres=0.5, iou_thres=0.2, dnn=False, cl
                             flag = 2.0
 
                         # 添加到锥桶数据
-                        zhuitong_data.extend([flag, float(cent_x), float(distance)])
+                        zhuitong_data.extend([flag, float(cent_x), float(cent_y),float(distance)])
 
                          # 发布锥桶坐标数据(新增功能)
             if zhuitong_data:

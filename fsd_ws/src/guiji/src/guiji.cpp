@@ -495,7 +495,7 @@ void zhuitongluxian(vector<std::pair<double, double>>& xy, vector<std::pair<doub
 
     }
 
-    if (num != 0)
+    if (xy_good.size() > 1 && num != 0)
     {
         vector<int> zuijindian = xunzuijin(xy, used, xy_good[jishu - 1]);
 
@@ -1998,6 +1998,51 @@ public:
 
             }
         }
+        if ((l_xy_good.size() == 3 && r_xy_good.size() == 2) || (l_xy_good.size() == 2 && r_xy_good.size() == 3))
+        {
+            int numPoints = 100;
+       
+            vector<std::pair<double, double>> controlPointsl;
+            vector<std::pair<double, double>> controlPointsr;
+       
+            if (l_xy_good.size() > r_xy_good.size())
+            {
+                controlPointsl = l_xy_good;
+                controlPointsr = r_xy_good;
+            }
+            else
+            {
+                controlPointsl = r_xy_good;
+                controlPointsr = l_xy_good;
+            }
+       
+       
+       
+       
+            for (int j = 0; j <= numPoints; ++j) {
+                double t = static_cast<double>(j) / numPoints; // 参数 t
+       
+                double xl = std::pow(1 - t, 2) * controlPointsl[0].first +
+                    2 * (1 - t) * t * controlPointsl[1].first +
+                    std::pow(t, 2) * controlPointsl[2].first;
+       
+                double yl = std::pow(1 - t, 2) * controlPointsl[0].second +
+                    2 * (1 - t) * t * controlPointsl[1].second +
+                    std::pow(t, 2) * controlPointsl[2].second;
+       
+                double xr = (1 - t) * controlPointsr[0].first +
+                    t * controlPointsr[1].first;
+       
+       
+                double yr = (1 - t) * controlPointsr[0].second +
+                    t * controlPointsr[1].second;
+       
+                lujing_dian.emplace_back((xl + xr) / 2, (yr + yl) / 2);
+       
+       
+       
+            }
+        }
         lujing_dian2 = lujingdianxuanqu(lujing_dian);
 
         //// 输出筛选后的结果
@@ -2446,13 +2491,13 @@ public:
         kongzhi_v=0;
 
         std::string filepath = "/home/fury/fsd/data.txt";  // 修改为你想保存的路径
-// 以截断模式打开文件，清空内容
-std::ofstream file(filepath, std::ios::out | std::ios::trunc);
-if (file.is_open()) {
-    file.close();  // 清空后关闭文件
-} else {
-    ROS_ERROR("无法打开文件: %s", filepath.c_str());
-}
+        // // 以截断模式打开文件，清空内容
+        // std::ofstream file(filepath, std::ios::out | std::ios::trunc);
+        // if (file.is_open()) {
+        //     file.close();  // 清空后关闭文件
+        // } else {
+        //     ROS_ERROR("无法打开文件: %s", filepath.c_str());
+        // }
 
 
         // 订阅视觉节点发布的左侧数据
@@ -2482,38 +2527,65 @@ if (file.is_open()) {
         //ROS_INFO("Published v and steer data");
     }
 
+    double cx=648.4617460;
+    double cy=351.6741173;
+    double f=529.6;
+
     void zhuitongCallback(const std_msgs::Float64MultiArray::ConstPtr& msg) {
         l_xy.clear();
         r_xy.clear();
         
-        // 检查数据总数是否为3的倍数
-        if (msg->data.size() % 3 != 0) {
-            ROS_ERROR("接收到的数据个数不是3的倍数!");
+        // 检查数据总数是否为4的倍数
+        if (msg->data.size() % 4 != 0) {
+            ROS_ERROR("接收到的数据个数不是4的倍数!");
             return;
         }
 
-        // 每3个数据为一组：第一个为标志位，后两个为坐标值
-        for (size_t i = 0; i < msg->data.size(); i += 3) {
+        // 每4个数据为一组：第一个为标志位，然后是centx，centy，z
+        for (size_t i = 0; i < msg->data.size(); i += 4) {
             int flag = static_cast<int>(msg->data[i]);
-            double y = (msg->data[i + 1]/100-6.6)/5;  //畸变值0.7393
-            double x = (msg->data[i + 2]*10)/5;
+            double centx = msg->data[i + 1];  
+            double centy = msg->data[i + 2];
+            double z=msg->data[i + 3];
 
-            y=-y*x*x/3.2*5;
-            
-            //cout<<"x"<<x<<endl;
-            //cout<<"y"<<y<<endl;
+            double pos_x=(centx-cx)*z/f;
+            double pos_y=(centy-cy)*z/f;
+
+            double x=z;
+            double y=-pos_x;
             
             if(x>=0.1)
             {
-                if (flag == 1) {
+                if (flag == 2) {
                     l_xy.push_back(std::make_pair(x, y));
-                } else if (flag == 2) {
+                } else if (flag == 1) {
                     r_xy.push_back(std::make_pair(x, y));
                 } else {
                     ROS_WARN("收到未知标志位: %d", flag);
                 }
             }
         }
+        // for (size_t i = 0; i < msg->data.size(); i += 3) {
+        //     int flag = static_cast<int>(msg->data[i]);
+        //     double y = (msg->data[i + 1]/100-6.6)/5;  //畸变值0.7393
+        //     double x = (msg->data[i + 2]*10)/5;
+
+        //     y=-y*x*x/3.2*5;
+            
+        //     //cout<<"x"<<x<<endl;
+        //     //cout<<"y"<<y<<endl;
+            
+        //     if(x>=0.1)
+        //     {
+        //         if (flag == 1) {
+        //             l_xy.push_back(std::make_pair(x, y));
+        //         } else if (flag == 2) {
+        //             r_xy.push_back(std::make_pair(x, y));
+        //         } else {
+        //             ROS_WARN("收到未知标志位: %d", flag);
+        //         }
+        //     }
+        // }
 
         // 打开文件（以追加模式打开），注意确保路径存在
  std::string filepath = "/home/fury/fsd/data.txt";  // 修改为你想保存的路径

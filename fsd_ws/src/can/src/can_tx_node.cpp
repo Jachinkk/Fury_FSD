@@ -84,6 +84,79 @@ public:
     ROS_INFO("CAN 通道 0 启动成功，开始发送 CAN 帧");
   }
 
+  void zhongzhi()
+  {
+    VCI_CAN_OBJ sendObj;
+    memset(&sendObj, 0, sizeof(sendObj));
+
+    sendObj.ID = 0x0417;
+    sendObj.SendType = 1;       // 正常发送
+    sendObj.RemoteFlag = 0;     // 数据帧
+    sendObj.ExternFlag = 0;     // 标准帧
+    sendObj.DataLen = 8;        // 数据长度
+    
+    sendObj.Data[0] = 9;        // 示例数据
+    sendObj.Data[1] = 0;        // 1 是接管，0 是不接管
+    sendObj.Data[2] = 27;       // 0 是低速，1 是高速
+
+   
+    sendObj.Data[3] = 50;
+    sendObj.Data[4] = 0; 
+
+
+    
+    
+    
+    sendObj.Data[5] = 50; 
+    
+   
+    sendObj.Data[6] = 0; 
+
+    sendObj.Data[7] = 0; 
+
+    int ret = VCI_Transmit(VCI_USBCAN2, device_index_, 0, &sendObj, 1);
+    if (ret != 1)
+    {
+      ROS_ERROR("success over_1");
+    }
+    else
+    {
+      ROS_INFO("no over ID: 0x%08X", sendObj.ID);
+    }
+
+
+    sendObj.Data[0] = 0;        // 示例数据
+    sendObj.Data[1] = 0;        // 1 是接管，0 是不接管
+    sendObj.Data[2] = 0;       // 0 是低速，1 是高速
+
+   
+    sendObj.Data[3] = 50;
+    sendObj.Data[4] = 0; 
+
+
+    
+    
+    
+    sendObj.Data[5] = 50; 
+    
+   
+    sendObj.Data[6] = 0; 
+
+    sendObj.Data[7] = 0; 
+    ret = VCI_Transmit(VCI_USBCAN2, device_index_, 0, &sendObj, 1);
+    if (ret != 1)
+    {
+      ROS_ERROR("success over_2");
+    }
+    else
+    {
+      ROS_INFO("no over ID: 0x%08X", sendObj.ID);
+    }
+    VCI_CloseDevice(VCI_USBCAN2, device_index_);
+
+    std::cout << VCI_USBCAN2 << std::endl;
+  }
+
 private:
   // 当收到订阅消息时更新上次消息时间，并发送 CAN 帧
   void kongzhiCallback(const std_msgs::Float64MultiArray::ConstPtr& msg)
@@ -213,6 +286,8 @@ private:
     std::cout << VCI_USBCAN2 << std::endl;
   }
 
+  
+
   ros::Subscriber kongzhi_subscription_;
   ros::Timer timeout_timer_;
   int device_index_;
@@ -231,6 +306,7 @@ int main(int argc, char *argv[])
   try {
     CanTxNode node;
     ros::spin();
+    node.zhongzhi();
   } catch (const std::exception & e) {
     ROS_ERROR("Exception: %s", e.what());
   }
