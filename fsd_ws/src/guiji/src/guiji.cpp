@@ -2476,6 +2476,7 @@ public:
     ros::NodeHandle nh_;
     ros::Subscriber zhuitong_subscription_;
     ros::Publisher publisher_kongzhi_;
+    ros::Publisher publisher_zhuitong_;
     ros::Timer timer_;
 
     ros::Timer shiyan;
@@ -2505,9 +2506,10 @@ public:
         
         // 控制信号发布节点
         publisher_kongzhi_ = nh_.advertise<std_msgs::Float64MultiArray>("kongzhi_topic", 10);
-        
+        publisher_zhuitong_ = nh_.advertise<std_msgs::Float64MultiArray>("zhuitong_topic", 10);
+
         // 定时器：每秒发布一次数据
-        timer_ = nh_.createTimer(ros::Duration(0.1), &MyCPlusPlusNode::publisher_data_, this);
+        //timer_ = nh_.createTimer(ros::Duration(0.1), &MyCPlusPlusNode::publisher_data_, this);
 
         //下面这行只是来验证我的算法，实车测试的时候注释掉
         //shiyan = nh_.createTimer(ros::Duration(0.1), &MyCPlusPlusNode::processDataWrapper, this);
@@ -2558,12 +2560,18 @@ public:
             {
                 if (flag == 2) {
                     l_xy.push_back(std::make_pair(x, y));
+                    
                 } else if (flag == 1) {
                     r_xy.push_back(std::make_pair(x, y));
+                    
                 } else {
                     ROS_WARN("收到未知标志位: %d", flag);
                 }
             }
+
+       
+            
+            
         }
         // for (size_t i = 0; i < msg->data.size(); i += 3) {
         //     int flag = static_cast<int>(msg->data[i]);
@@ -2595,13 +2603,13 @@ public:
 
      file << "l_xy 数据:\n";
      for (const auto &pt : l_xy) {
-         file << "(" << pt.first << ", " << pt.second << ") ";
+         file << "{" << pt.first << ", " << pt.second << "}, ";
      }
      file << "\n\n";
 
      file << "r_xy 数据:\n";
      for (const auto &pt : r_xy) {
-         file << "(" << pt.first << ", " << pt.second << ") ";
+         file << "{" << pt.first << ", " << pt.second << "}, ";
      }
      file << "\n---------------------------------------\n\n";
 
@@ -2629,7 +2637,7 @@ public:
 
             // cout<<z.l_xy.size()<<endl;
             // cout<<z.r_xy.size()<<endl;
-            if(z.l_xy.size()<=2 || z.r_xy.size()<=2)
+            if(z.l_xy.size()<2 || z.r_xy.size()<2)
             {
                 cout<<"over"<<endl;
                 return;
@@ -2768,6 +2776,23 @@ z.youxiaozhuitong();
 
  tong_r = z.l_xy_good;
  tong_b = z.r_xy_good;
+
+ std_msgs::Float64MultiArray msg_data2;
+
+ for(std::pair<double,double> xy: tong_b)
+ {
+    msg_data2.data.push_back(1);
+    msg_data2.data.push_back(xy.first);
+    msg_data2.data.push_back(xy.second);
+ }
+ for(std::pair<double,double> xy: tong_r)
+ {
+    msg_data2.data.push_back(1);
+    msg_data2.data.push_back(xy.first);
+    msg_data2.data.push_back(xy.second);
+ }
+        
+        publisher_zhuitong_.publish(msg_data2);
 
 // // //  /*tong_r = z.l_xy;
 // // //  tong_b = z.r_xy;*/
@@ -2911,12 +2936,33 @@ else{
     kongzhi_v=0;
 }
 
-            
+std_msgs::Float64MultiArray msg_data;
+msg_data.data.push_back(kongzhi_v);
+msg_data.data.push_back(kongzhi_steer);
+publisher_kongzhi_.publish(msg_data);       
 
-       
+std::string filepath = "/home/fury/fsd/steer.txt";  // 修改为你想保存的路径
+std::ofstream file(filepath, std::ios::app);
+if (file.is_open()) {
+    file << "---- processData 调用时间: " << ros::Time::now() << " ----\n";
+
+    file << "steer:\n";
+    file << kongzhi_steer;
+    file << "\n\n";
+    file << "v:\n";
+    file << kongzhi_v;
+    
+    file << "\n---------------------------------------\n\n";
+
+    file.close();
+} else {
+    ROS_ERROR("无法打开文件: %s", filepath.c_str());
+}
 
     
     }
+
+
 };
 
 int main(int argc, char* argv[]) {

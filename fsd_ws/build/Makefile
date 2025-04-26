@@ -515,8 +515,21 @@ sensor_msgs_generate_messages_cpp: cmake_check_build_system
 
 # fast build rule for target.
 sensor_msgs_generate_messages_cpp/fast:
-	$(MAKE) -f zed_yolo_node/CMakeFiles/sensor_msgs_generate_messages_cpp.dir/build.make zed_yolo_node/CMakeFiles/sensor_msgs_generate_messages_cpp.dir/build
+	$(MAKE) -f map/CMakeFiles/sensor_msgs_generate_messages_cpp.dir/build.make map/CMakeFiles/sensor_msgs_generate_messages_cpp.dir/build
 .PHONY : sensor_msgs_generate_messages_cpp/fast
+
+#=============================================================================
+# Target rules for targets named map_node
+
+# Build rule for target.
+map_node: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 map_node
+.PHONY : map_node
+
+# fast build rule for target.
+map_node/fast:
+	$(MAKE) -f map/CMakeFiles/map_node.dir/build.make map/CMakeFiles/map_node.dir/build
+.PHONY : map_node/fast
 
 #=============================================================================
 # Target rules for targets named sensor_msgs_generate_messages_eus
@@ -528,7 +541,7 @@ sensor_msgs_generate_messages_eus: cmake_check_build_system
 
 # fast build rule for target.
 sensor_msgs_generate_messages_eus/fast:
-	$(MAKE) -f zed_yolo_node/CMakeFiles/sensor_msgs_generate_messages_eus.dir/build.make zed_yolo_node/CMakeFiles/sensor_msgs_generate_messages_eus.dir/build
+	$(MAKE) -f map/CMakeFiles/sensor_msgs_generate_messages_eus.dir/build.make map/CMakeFiles/sensor_msgs_generate_messages_eus.dir/build
 .PHONY : sensor_msgs_generate_messages_eus/fast
 
 #=============================================================================
@@ -541,7 +554,7 @@ geometry_msgs_generate_messages_eus: cmake_check_build_system
 
 # fast build rule for target.
 geometry_msgs_generate_messages_eus/fast:
-	$(MAKE) -f zed_yolo_node/CMakeFiles/geometry_msgs_generate_messages_eus.dir/build.make zed_yolo_node/CMakeFiles/geometry_msgs_generate_messages_eus.dir/build
+	$(MAKE) -f map/CMakeFiles/geometry_msgs_generate_messages_eus.dir/build.make map/CMakeFiles/geometry_msgs_generate_messages_eus.dir/build
 .PHONY : geometry_msgs_generate_messages_eus/fast
 
 #=============================================================================
@@ -554,7 +567,7 @@ geometry_msgs_generate_messages_lisp: cmake_check_build_system
 
 # fast build rule for target.
 geometry_msgs_generate_messages_lisp/fast:
-	$(MAKE) -f zed_yolo_node/CMakeFiles/geometry_msgs_generate_messages_lisp.dir/build.make zed_yolo_node/CMakeFiles/geometry_msgs_generate_messages_lisp.dir/build
+	$(MAKE) -f map/CMakeFiles/geometry_msgs_generate_messages_lisp.dir/build.make map/CMakeFiles/geometry_msgs_generate_messages_lisp.dir/build
 .PHONY : geometry_msgs_generate_messages_lisp/fast
 
 #=============================================================================
@@ -567,7 +580,7 @@ sensor_msgs_generate_messages_lisp: cmake_check_build_system
 
 # fast build rule for target.
 sensor_msgs_generate_messages_lisp/fast:
-	$(MAKE) -f zed_yolo_node/CMakeFiles/sensor_msgs_generate_messages_lisp.dir/build.make zed_yolo_node/CMakeFiles/sensor_msgs_generate_messages_lisp.dir/build
+	$(MAKE) -f map/CMakeFiles/sensor_msgs_generate_messages_lisp.dir/build.make map/CMakeFiles/sensor_msgs_generate_messages_lisp.dir/build
 .PHONY : sensor_msgs_generate_messages_lisp/fast
 
 #=============================================================================
@@ -580,7 +593,7 @@ sensor_msgs_generate_messages_nodejs: cmake_check_build_system
 
 # fast build rule for target.
 sensor_msgs_generate_messages_nodejs/fast:
-	$(MAKE) -f zed_yolo_node/CMakeFiles/sensor_msgs_generate_messages_nodejs.dir/build.make zed_yolo_node/CMakeFiles/sensor_msgs_generate_messages_nodejs.dir/build
+	$(MAKE) -f map/CMakeFiles/sensor_msgs_generate_messages_nodejs.dir/build.make map/CMakeFiles/sensor_msgs_generate_messages_nodejs.dir/build
 .PHONY : sensor_msgs_generate_messages_nodejs/fast
 
 #=============================================================================
@@ -593,7 +606,7 @@ geometry_msgs_generate_messages_py: cmake_check_build_system
 
 # fast build rule for target.
 geometry_msgs_generate_messages_py/fast:
-	$(MAKE) -f zed_yolo_node/CMakeFiles/geometry_msgs_generate_messages_py.dir/build.make zed_yolo_node/CMakeFiles/geometry_msgs_generate_messages_py.dir/build
+	$(MAKE) -f map/CMakeFiles/geometry_msgs_generate_messages_py.dir/build.make map/CMakeFiles/geometry_msgs_generate_messages_py.dir/build
 .PHONY : geometry_msgs_generate_messages_py/fast
 
 #=============================================================================
@@ -606,7 +619,7 @@ sensor_msgs_generate_messages_py: cmake_check_build_system
 
 # fast build rule for target.
 sensor_msgs_generate_messages_py/fast:
-	$(MAKE) -f zed_yolo_node/CMakeFiles/sensor_msgs_generate_messages_py.dir/build.make zed_yolo_node/CMakeFiles/sensor_msgs_generate_messages_py.dir/build
+	$(MAKE) -f map/CMakeFiles/sensor_msgs_generate_messages_py.dir/build.make map/CMakeFiles/sensor_msgs_generate_messages_py.dir/build
 .PHONY : sensor_msgs_generate_messages_py/fast
 
 #=============================================================================
@@ -619,7 +632,7 @@ geometry_msgs_generate_messages_cpp: cmake_check_build_system
 
 # fast build rule for target.
 geometry_msgs_generate_messages_cpp/fast:
-	$(MAKE) -f zed_yolo_node/CMakeFiles/geometry_msgs_generate_messages_cpp.dir/build.make zed_yolo_node/CMakeFiles/geometry_msgs_generate_messages_cpp.dir/build
+	$(MAKE) -f map/CMakeFiles/geometry_msgs_generate_messages_cpp.dir/build.make map/CMakeFiles/geometry_msgs_generate_messages_cpp.dir/build
 .PHONY : geometry_msgs_generate_messages_cpp/fast
 
 #=============================================================================
@@ -632,7 +645,7 @@ geometry_msgs_generate_messages_nodejs: cmake_check_build_system
 
 # fast build rule for target.
 geometry_msgs_generate_messages_nodejs/fast:
-	$(MAKE) -f zed_yolo_node/CMakeFiles/geometry_msgs_generate_messages_nodejs.dir/build.make zed_yolo_node/CMakeFiles/geometry_msgs_generate_messages_nodejs.dir/build
+	$(MAKE) -f map/CMakeFiles/geometry_msgs_generate_messages_nodejs.dir/build.make map/CMakeFiles/geometry_msgs_generate_messages_nodejs.dir/build
 .PHONY : geometry_msgs_generate_messages_nodejs/fast
 
 # Help Target
@@ -675,6 +688,7 @@ help:
 	@echo "... rosgraph_msgs_generate_messages_py"
 	@echo "... guiji"
 	@echo "... sensor_msgs_generate_messages_cpp"
+	@echo "... map_node"
 	@echo "... sensor_msgs_generate_messages_eus"
 	@echo "... geometry_msgs_generate_messages_eus"
 	@echo "... geometry_msgs_generate_messages_lisp"

@@ -13,10 +13,11 @@ using namespace std;
 
 int jinzhi(double radian)
 {
-    if(radian > 0.5233) radian = 0.5233;
-    if(radian < -0.5233) radian = -0.5233;
+    double maxx=0.30;
+    if(radian > maxx) radian = maxx;
+    if(radian < -maxx) radian = -maxx;
 
-    int result = (radian + 0.5233) / 0.5233 / 2 * 100;
+    int result = (radian + maxx) / maxx / 2 * 100;
     return result;
 }
 

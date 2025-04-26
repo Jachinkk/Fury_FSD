@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<package format="2">
+  <name>map</name>
+  <version>0.0.1</version>
+  <description>ROS 1 node that converts GPS to local ENU and visualises a global path with SFML.</description>
+
+  <maintainer email="you@example.com">Your Name</maintainer>
+  <license>BSD</license>
+
+  <!-- ❶ 构建工具 -->
+  <buildtool_depend>catkin</buildtool_depend>
+
+  <!-- ❷ 构建 & 运行依赖 -->
+  <depend>roscpp</depend>
+  <depend>sensor_msgs</depend>
+  <depend>std_msgs</depend>
+  <depend>geometry_msgs</depend>
+
+  <!-- ❸ 系统库（SFML） -->
+  <exec_depend>libsfml-dev</exec_depend>
+  <build_depend>libsfml-dev</build_depend>
+
+  <!-- ❹ 其它字段可自行补充 -->
+</package>

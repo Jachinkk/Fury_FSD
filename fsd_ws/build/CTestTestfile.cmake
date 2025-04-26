@@ -7,4 +7,5 @@
 subdirs("gtest")
 subdirs("can")
 subdirs("guiji")
+subdirs("map")
 subdirs("zed_yolo_node")

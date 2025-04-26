@@ -133,6 +133,7 @@ if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   include("/home/fury/fsd/fsd_ws/build/gtest/cmake_install.cmake")
   include("/home/fury/fsd/fsd_ws/build/can/cmake_install.cmake")
   include("/home/fury/fsd/fsd_ws/build/guiji/cmake_install.cmake")
+  include("/home/fury/fsd/fsd_ws/build/map/cmake_install.cmake")
   include("/home/fury/fsd/fsd_ws/build/zed_yolo_node/cmake_install.cmake")
 
 endif()

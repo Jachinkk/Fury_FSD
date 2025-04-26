@@ -77,6 +77,9 @@
         "typeinfo": "cpp",
         "valarray": "cpp",
         "variant": "cpp",
-        "clocale": "cpp"
+        "clocale": "cpp",
+        "*.ipp": "cpp",
+        "rope": "cpp",
+        "span": "cpp"
     }
 }

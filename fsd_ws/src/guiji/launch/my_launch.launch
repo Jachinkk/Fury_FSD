@@ -15,6 +15,11 @@
 
   <node pkg="can" type="can_tx_node" name="can_tx_node" output="screen" />
  
-
+<!-- ── 4. ✨ 新增：全局路径可视化节点 (map) ─────────────────────── -->
+  <!-- <node pkg="map"
+        type="map_node"
+        name="map_node"
+        output="screen"
+        respawn="true" /> -->
   
 </launch>

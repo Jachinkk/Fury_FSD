@@ -56,6 +56,7 @@ CMAKE_BINARY_DIR = /home/fury/fsd/fsd_ws/build
 all: gtest/all
 all: can/all
 all: guiji/all
+all: map/all
 all: zed_yolo_node/all
 
 .PHONY : all
@@ -64,6 +65,7 @@ all: zed_yolo_node/all
 preinstall: gtest/preinstall
 preinstall: can/preinstall
 preinstall: guiji/preinstall
+preinstall: map/preinstall
 preinstall: zed_yolo_node/preinstall
 
 .PHONY : preinstall
@@ -77,6 +79,7 @@ clean: CMakeFiles/download_extra_data.dir/clean
 clean: gtest/clean
 clean: can/clean
 clean: guiji/clean
+clean: map/clean
 clean: zed_yolo_node/clean
 
 .PHONY : clean
@@ -190,6 +193,34 @@ guiji/clean: guiji/CMakeFiles/guiji.dir/clean
 .PHONY : guiji/clean
 
 #=============================================================================
+# Directory level rules for directory map
+
+# Recursive "all" directory target.
+map/all: map/CMakeFiles/map_node.dir/all
+
+.PHONY : map/all
+
+# Recursive "preinstall" directory target.
+map/preinstall:
+
+.PHONY : map/preinstall
+
+# Recursive "clean" directory target.
+map/clean: map/CMakeFiles/sensor_msgs_generate_messages_cpp.dir/clean
+map/clean: map/CMakeFiles/map_node.dir/clean
+map/clean: map/CMakeFiles/sensor_msgs_generate_messages_eus.dir/clean
+map/clean: map/CMakeFiles/geometry_msgs_generate_messages_eus.dir/clean
+map/clean: map/CMakeFiles/geometry_msgs_generate_messages_lisp.dir/clean
+map/clean: map/CMakeFiles/sensor_msgs_generate_messages_lisp.dir/clean
+map/clean: map/CMakeFiles/sensor_msgs_generate_messages_nodejs.dir/clean
+map/clean: map/CMakeFiles/geometry_msgs_generate_messages_py.dir/clean
+map/clean: map/CMakeFiles/sensor_msgs_generate_messages_py.dir/clean
+map/clean: map/CMakeFiles/geometry_msgs_generate_messages_cpp.dir/clean
+map/clean: map/CMakeFiles/geometry_msgs_generate_messages_nodejs.dir/clean
+
+.PHONY : map/clean
+
+#=============================================================================
 # Directory level rules for directory zed_yolo_node
 
 # Recursive "all" directory target.
@@ -203,16 +234,7 @@ zed_yolo_node/preinstall:
 .PHONY : zed_yolo_node/preinstall
 
 # Recursive "clean" directory target.
-zed_yolo_node/clean: zed_yolo_node/CMakeFiles/sensor_msgs_generate_messages_cpp.dir/clean
-zed_yolo_node/clean: zed_yolo_node/CMakeFiles/sensor_msgs_generate_messages_eus.dir/clean
-zed_yolo_node/clean: zed_yolo_node/CMakeFiles/geometry_msgs_generate_messages_eus.dir/clean
-zed_yolo_node/clean: zed_yolo_node/CMakeFiles/geometry_msgs_generate_messages_lisp.dir/clean
-zed_yolo_node/clean: zed_yolo_node/CMakeFiles/sensor_msgs_generate_messages_lisp.dir/clean
-zed_yolo_node/clean: zed_yolo_node/CMakeFiles/sensor_msgs_generate_messages_nodejs.dir/clean
-zed_yolo_node/clean: zed_yolo_node/CMakeFiles/geometry_msgs_generate_messages_py.dir/clean
-zed_yolo_node/clean: zed_yolo_node/CMakeFiles/sensor_msgs_generate_messages_py.dir/clean
-zed_yolo_node/clean: zed_yolo_node/CMakeFiles/geometry_msgs_generate_messages_cpp.dir/clean
-zed_yolo_node/clean: zed_yolo_node/CMakeFiles/geometry_msgs_generate_messages_nodejs.dir/clean
+zed_yolo_node/clean:
 
 .PHONY : zed_yolo_node/clean
 
@@ -355,8 +377,8 @@ CMakeFiles/download_extra_data.dir/clean:
 # Target rules for target gtest/googlemock/CMakeFiles/gmock_main.dir
 
 # All Build rule for target.
-gtest/googlemock/CMakeFiles/gmock_main.dir/all: gtest/googletest/CMakeFiles/gtest.dir/all
 gtest/googlemock/CMakeFiles/gmock_main.dir/all: gtest/googlemock/CMakeFiles/gmock.dir/all
+gtest/googlemock/CMakeFiles/gmock_main.dir/all: gtest/googletest/CMakeFiles/gtest.dir/all
 	$(MAKE) -f gtest/googlemock/CMakeFiles/gmock_main.dir/build.make gtest/googlemock/CMakeFiles/gmock_main.dir/depend
 	$(MAKE) -f gtest/googlemock/CMakeFiles/gmock_main.dir/build.make gtest/googlemock/CMakeFiles/gmock_main.dir/build
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/fury/fsd/fsd_ws/build/CMakeFiles --progress-num=5,6 "Built target gmock_main"
@@ -920,274 +942,301 @@ guiji/CMakeFiles/guiji.dir/clean:
 .PHONY : guiji/CMakeFiles/guiji.dir/clean
 
 #=============================================================================
-# Target rules for target zed_yolo_node/CMakeFiles/sensor_msgs_generate_messages_cpp.dir
+# Target rules for target map/CMakeFiles/sensor_msgs_generate_messages_cpp.dir
 
 # All Build rule for target.
-zed_yolo_node/CMakeFiles/sensor_msgs_generate_messages_cpp.dir/all:
-	$(MAKE) -f zed_yolo_node/CMakeFiles/sensor_msgs_generate_messages_cpp.dir/build.make zed_yolo_node/CMakeFiles/sensor_msgs_generate_messages_cpp.dir/depend
-	$(MAKE) -f zed_yolo_node/CMakeFiles/sensor_msgs_generate_messages_cpp.dir/build.make zed_yolo_node/CMakeFiles/sensor_msgs_generate_messages_cpp.dir/build
+map/CMakeFiles/sensor_msgs_generate_messages_cpp.dir/all:
+	$(MAKE) -f map/CMakeFiles/sensor_msgs_generate_messages_cpp.dir/build.make map/CMakeFiles/sensor_msgs_generate_messages_cpp.dir/depend
+	$(MAKE) -f map/CMakeFiles/sensor_msgs_generate_messages_cpp.dir/build.make map/CMakeFiles/sensor_msgs_generate_messages_cpp.dir/build
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/fury/fsd/fsd_ws/build/CMakeFiles --progress-num= "Built target sensor_msgs_generate_messages_cpp"
-.PHONY : zed_yolo_node/CMakeFiles/sensor_msgs_generate_messages_cpp.dir/all
+.PHONY : map/CMakeFiles/sensor_msgs_generate_messages_cpp.dir/all
 
 # Build rule for subdir invocation for target.
-zed_yolo_node/CMakeFiles/sensor_msgs_generate_messages_cpp.dir/rule: cmake_check_build_system
+map/CMakeFiles/sensor_msgs_generate_messages_cpp.dir/rule: cmake_check_build_system
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/fury/fsd/fsd_ws/build/CMakeFiles 0
-	$(MAKE) -f CMakeFiles/Makefile2 zed_yolo_node/CMakeFiles/sensor_msgs_generate_messages_cpp.dir/all
+	$(MAKE) -f CMakeFiles/Makefile2 map/CMakeFiles/sensor_msgs_generate_messages_cpp.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/fury/fsd/fsd_ws/build/CMakeFiles 0
-.PHONY : zed_yolo_node/CMakeFiles/sensor_msgs_generate_messages_cpp.dir/rule
+.PHONY : map/CMakeFiles/sensor_msgs_generate_messages_cpp.dir/rule
 
 # Convenience name for target.
-sensor_msgs_generate_messages_cpp: zed_yolo_node/CMakeFiles/sensor_msgs_generate_messages_cpp.dir/rule
+sensor_msgs_generate_messages_cpp: map/CMakeFiles/sensor_msgs_generate_messages_cpp.dir/rule
 
 .PHONY : sensor_msgs_generate_messages_cpp
 
 # clean rule for target.
-zed_yolo_node/CMakeFiles/sensor_msgs_generate_messages_cpp.dir/clean:
-	$(MAKE) -f zed_yolo_node/CMakeFiles/sensor_msgs_generate_messages_cpp.dir/build.make zed_yolo_node/CMakeFiles/sensor_msgs_generate_messages_cpp.dir/clean
-.PHONY : zed_yolo_node/CMakeFiles/sensor_msgs_generate_messages_cpp.dir/clean
+map/CMakeFiles/sensor_msgs_generate_messages_cpp.dir/clean:
+	$(MAKE) -f map/CMakeFiles/sensor_msgs_generate_messages_cpp.dir/build.make map/CMakeFiles/sensor_msgs_generate_messages_cpp.dir/clean
+.PHONY : map/CMakeFiles/sensor_msgs_generate_messages_cpp.dir/clean
 
 #=============================================================================
-# Target rules for target zed_yolo_node/CMakeFiles/sensor_msgs_generate_messages_eus.dir
+# Target rules for target map/CMakeFiles/map_node.dir
 
 # All Build rule for target.
-zed_yolo_node/CMakeFiles/sensor_msgs_generate_messages_eus.dir/all:
-	$(MAKE) -f zed_yolo_node/CMakeFiles/sensor_msgs_generate_messages_eus.dir/build.make zed_yolo_node/CMakeFiles/sensor_msgs_generate_messages_eus.dir/depend
-	$(MAKE) -f zed_yolo_node/CMakeFiles/sensor_msgs_generate_messages_eus.dir/build.make zed_yolo_node/CMakeFiles/sensor_msgs_generate_messages_eus.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/fury/fsd/fsd_ws/build/CMakeFiles --progress-num= "Built target sensor_msgs_generate_messages_eus"
-.PHONY : zed_yolo_node/CMakeFiles/sensor_msgs_generate_messages_eus.dir/all
+map/CMakeFiles/map_node.dir/all:
+	$(MAKE) -f map/CMakeFiles/map_node.dir/build.make map/CMakeFiles/map_node.dir/depend
+	$(MAKE) -f map/CMakeFiles/map_node.dir/build.make map/CMakeFiles/map_node.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/fury/fsd/fsd_ws/build/CMakeFiles --progress-num=13,14 "Built target map_node"
+.PHONY : map/CMakeFiles/map_node.dir/all
 
 # Build rule for subdir invocation for target.
-zed_yolo_node/CMakeFiles/sensor_msgs_generate_messages_eus.dir/rule: cmake_check_build_system
+map/CMakeFiles/map_node.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/fury/fsd/fsd_ws/build/CMakeFiles 2
+	$(MAKE) -f CMakeFiles/Makefile2 map/CMakeFiles/map_node.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/fury/fsd/fsd_ws/build/CMakeFiles 0
-	$(MAKE) -f CMakeFiles/Makefile2 zed_yolo_node/CMakeFiles/sensor_msgs_generate_messages_eus.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/fury/fsd/fsd_ws/build/CMakeFiles 0
-.PHONY : zed_yolo_node/CMakeFiles/sensor_msgs_generate_messages_eus.dir/rule
+.PHONY : map/CMakeFiles/map_node.dir/rule
 
 # Convenience name for target.
-sensor_msgs_generate_messages_eus: zed_yolo_node/CMakeFiles/sensor_msgs_generate_messages_eus.dir/rule
+map_node: map/CMakeFiles/map_node.dir/rule
+
+.PHONY : map_node
+
+# clean rule for target.
+map/CMakeFiles/map_node.dir/clean:
+	$(MAKE) -f map/CMakeFiles/map_node.dir/build.make map/CMakeFiles/map_node.dir/clean
+.PHONY : map/CMakeFiles/map_node.dir/clean
+
+#=============================================================================
+# Target rules for target map/CMakeFiles/sensor_msgs_generate_messages_eus.dir
+
+# All Build rule for target.
+map/CMakeFiles/sensor_msgs_generate_messages_eus.dir/all:
+	$(MAKE) -f map/CMakeFiles/sensor_msgs_generate_messages_eus.dir/build.make map/CMakeFiles/sensor_msgs_generate_messages_eus.dir/depend
+	$(MAKE) -f map/CMakeFiles/sensor_msgs_generate_messages_eus.dir/build.make map/CMakeFiles/sensor_msgs_generate_messages_eus.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/fury/fsd/fsd_ws/build/CMakeFiles --progress-num= "Built target sensor_msgs_generate_messages_eus"
+.PHONY : map/CMakeFiles/sensor_msgs_generate_messages_eus.dir/all
+
+# Build rule for subdir invocation for target.
+map/CMakeFiles/sensor_msgs_generate_messages_eus.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/fury/fsd/fsd_ws/build/CMakeFiles 0
+	$(MAKE) -f CMakeFiles/Makefile2 map/CMakeFiles/sensor_msgs_generate_messages_eus.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/fury/fsd/fsd_ws/build/CMakeFiles 0
+.PHONY : map/CMakeFiles/sensor_msgs_generate_messages_eus.dir/rule
+
+# Convenience name for target.
+sensor_msgs_generate_messages_eus: map/CMakeFiles/sensor_msgs_generate_messages_eus.dir/rule
 
 .PHONY : sensor_msgs_generate_messages_eus
 
 # clean rule for target.
-zed_yolo_node/CMakeFiles/sensor_msgs_generate_messages_eus.dir/clean:
-	$(MAKE) -f zed_yolo_node/CMakeFiles/sensor_msgs_generate_messages_eus.dir/build.make zed_yolo_node/CMakeFiles/sensor_msgs_generate_messages_eus.dir/clean
-.PHONY : zed_yolo_node/CMakeFiles/sensor_msgs_generate_messages_eus.dir/clean
+map/CMakeFiles/sensor_msgs_generate_messages_eus.dir/clean:
+	$(MAKE) -f map/CMakeFiles/sensor_msgs_generate_messages_eus.dir/build.make map/CMakeFiles/sensor_msgs_generate_messages_eus.dir/clean
+.PHONY : map/CMakeFiles/sensor_msgs_generate_messages_eus.dir/clean
 
 #=============================================================================
-# Target rules for target zed_yolo_node/CMakeFiles/geometry_msgs_generate_messages_eus.dir
+# Target rules for target map/CMakeFiles/geometry_msgs_generate_messages_eus.dir
 
 # All Build rule for target.
-zed_yolo_node/CMakeFiles/geometry_msgs_generate_messages_eus.dir/all:
-	$(MAKE) -f zed_yolo_node/CMakeFiles/geometry_msgs_generate_messages_eus.dir/build.make zed_yolo_node/CMakeFiles/geometry_msgs_generate_messages_eus.dir/depend
-	$(MAKE) -f zed_yolo_node/CMakeFiles/geometry_msgs_generate_messages_eus.dir/build.make zed_yolo_node/CMakeFiles/geometry_msgs_generate_messages_eus.dir/build
+map/CMakeFiles/geometry_msgs_generate_messages_eus.dir/all:
+	$(MAKE) -f map/CMakeFiles/geometry_msgs_generate_messages_eus.dir/build.make map/CMakeFiles/geometry_msgs_generate_messages_eus.dir/depend
+	$(MAKE) -f map/CMakeFiles/geometry_msgs_generate_messages_eus.dir/build.make map/CMakeFiles/geometry_msgs_generate_messages_eus.dir/build
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/fury/fsd/fsd_ws/build/CMakeFiles --progress-num= "Built target geometry_msgs_generate_messages_eus"
-.PHONY : zed_yolo_node/CMakeFiles/geometry_msgs_generate_messages_eus.dir/all
+.PHONY : map/CMakeFiles/geometry_msgs_generate_messages_eus.dir/all
 
 # Build rule for subdir invocation for target.
-zed_yolo_node/CMakeFiles/geometry_msgs_generate_messages_eus.dir/rule: cmake_check_build_system
+map/CMakeFiles/geometry_msgs_generate_messages_eus.dir/rule: cmake_check_build_system
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/fury/fsd/fsd_ws/build/CMakeFiles 0
-	$(MAKE) -f CMakeFiles/Makefile2 zed_yolo_node/CMakeFiles/geometry_msgs_generate_messages_eus.dir/all
+	$(MAKE) -f CMakeFiles/Makefile2 map/CMakeFiles/geometry_msgs_generate_messages_eus.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/fury/fsd/fsd_ws/build/CMakeFiles 0
-.PHONY : zed_yolo_node/CMakeFiles/geometry_msgs_generate_messages_eus.dir/rule
+.PHONY : map/CMakeFiles/geometry_msgs_generate_messages_eus.dir/rule
 
 # Convenience name for target.
-geometry_msgs_generate_messages_eus: zed_yolo_node/CMakeFiles/geometry_msgs_generate_messages_eus.dir/rule
+geometry_msgs_generate_messages_eus: map/CMakeFiles/geometry_msgs_generate_messages_eus.dir/rule
 
 .PHONY : geometry_msgs_generate_messages_eus
 
 # clean rule for target.
-zed_yolo_node/CMakeFiles/geometry_msgs_generate_messages_eus.dir/clean:
-	$(MAKE) -f zed_yolo_node/CMakeFiles/geometry_msgs_generate_messages_eus.dir/build.make zed_yolo_node/CMakeFiles/geometry_msgs_generate_messages_eus.dir/clean
-.PHONY : zed_yolo_node/CMakeFiles/geometry_msgs_generate_messages_eus.dir/clean
+map/CMakeFiles/geometry_msgs_generate_messages_eus.dir/clean:
+	$(MAKE) -f map/CMakeFiles/geometry_msgs_generate_messages_eus.dir/build.make map/CMakeFiles/geometry_msgs_generate_messages_eus.dir/clean
+.PHONY : map/CMakeFiles/geometry_msgs_generate_messages_eus.dir/clean
 
 #=============================================================================
-# Target rules for target zed_yolo_node/CMakeFiles/geometry_msgs_generate_messages_lisp.dir
+# Target rules for target map/CMakeFiles/geometry_msgs_generate_messages_lisp.dir
 
 # All Build rule for target.
-zed_yolo_node/CMakeFiles/geometry_msgs_generate_messages_lisp.dir/all:
-	$(MAKE) -f zed_yolo_node/CMakeFiles/geometry_msgs_generate_messages_lisp.dir/build.make zed_yolo_node/CMakeFiles/geometry_msgs_generate_messages_lisp.dir/depend
-	$(MAKE) -f zed_yolo_node/CMakeFiles/geometry_msgs_generate_messages_lisp.dir/build.make zed_yolo_node/CMakeFiles/geometry_msgs_generate_messages_lisp.dir/build
+map/CMakeFiles/geometry_msgs_generate_messages_lisp.dir/all:
+	$(MAKE) -f map/CMakeFiles/geometry_msgs_generate_messages_lisp.dir/build.make map/CMakeFiles/geometry_msgs_generate_messages_lisp.dir/depend
+	$(MAKE) -f map/CMakeFiles/geometry_msgs_generate_messages_lisp.dir/build.make map/CMakeFiles/geometry_msgs_generate_messages_lisp.dir/build
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/fury/fsd/fsd_ws/build/CMakeFiles --progress-num= "Built target geometry_msgs_generate_messages_lisp"
-.PHONY : zed_yolo_node/CMakeFiles/geometry_msgs_generate_messages_lisp.dir/all
+.PHONY : map/CMakeFiles/geometry_msgs_generate_messages_lisp.dir/all
 
 # Build rule for subdir invocation for target.
-zed_yolo_node/CMakeFiles/geometry_msgs_generate_messages_lisp.dir/rule: cmake_check_build_system
+map/CMakeFiles/geometry_msgs_generate_messages_lisp.dir/rule: cmake_check_build_system
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/fury/fsd/fsd_ws/build/CMakeFiles 0
-	$(MAKE) -f CMakeFiles/Makefile2 zed_yolo_node/CMakeFiles/geometry_msgs_generate_messages_lisp.dir/all
+	$(MAKE) -f CMakeFiles/Makefile2 map/CMakeFiles/geometry_msgs_generate_messages_lisp.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/fury/fsd/fsd_ws/build/CMakeFiles 0
-.PHONY : zed_yolo_node/CMakeFiles/geometry_msgs_generate_messages_lisp.dir/rule
+.PHONY : map/CMakeFiles/geometry_msgs_generate_messages_lisp.dir/rule
 
 # Convenience name for target.
-geometry_msgs_generate_messages_lisp: zed_yolo_node/CMakeFiles/geometry_msgs_generate_messages_lisp.dir/rule
+geometry_msgs_generate_messages_lisp: map/CMakeFiles/geometry_msgs_generate_messages_lisp.dir/rule
 
 .PHONY : geometry_msgs_generate_messages_lisp
 
 # clean rule for target.
-zed_yolo_node/CMakeFiles/geometry_msgs_generate_messages_lisp.dir/clean:
-	$(MAKE) -f zed_yolo_node/CMakeFiles/geometry_msgs_generate_messages_lisp.dir/build.make zed_yolo_node/CMakeFiles/geometry_msgs_generate_messages_lisp.dir/clean
-.PHONY : zed_yolo_node/CMakeFiles/geometry_msgs_generate_messages_lisp.dir/clean
+map/CMakeFiles/geometry_msgs_generate_messages_lisp.dir/clean:
+	$(MAKE) -f map/CMakeFiles/geometry_msgs_generate_messages_lisp.dir/build.make map/CMakeFiles/geometry_msgs_generate_messages_lisp.dir/clean
+.PHONY : map/CMakeFiles/geometry_msgs_generate_messages_lisp.dir/clean
 
 #=============================================================================
-# Target rules for target zed_yolo_node/CMakeFiles/sensor_msgs_generate_messages_lisp.dir
+# Target rules for target map/CMakeFiles/sensor_msgs_generate_messages_lisp.dir
 
 # All Build rule for target.
-zed_yolo_node/CMakeFiles/sensor_msgs_generate_messages_lisp.dir/all:
-	$(MAKE) -f zed_yolo_node/CMakeFiles/sensor_msgs_generate_messages_lisp.dir/build.make zed_yolo_node/CMakeFiles/sensor_msgs_generate_messages_lisp.dir/depend
-	$(MAKE) -f zed_yolo_node/CMakeFiles/sensor_msgs_generate_messages_lisp.dir/build.make zed_yolo_node/CMakeFiles/sensor_msgs_generate_messages_lisp.dir/build
+map/CMakeFiles/sensor_msgs_generate_messages_lisp.dir/all:
+	$(MAKE) -f map/CMakeFiles/sensor_msgs_generate_messages_lisp.dir/build.make map/CMakeFiles/sensor_msgs_generate_messages_lisp.dir/depend
+	$(MAKE) -f map/CMakeFiles/sensor_msgs_generate_messages_lisp.dir/build.make map/CMakeFiles/sensor_msgs_generate_messages_lisp.dir/build
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/fury/fsd/fsd_ws/build/CMakeFiles --progress-num= "Built target sensor_msgs_generate_messages_lisp"
-.PHONY : zed_yolo_node/CMakeFiles/sensor_msgs_generate_messages_lisp.dir/all
+.PHONY : map/CMakeFiles/sensor_msgs_generate_messages_lisp.dir/all
 
 # Build rule for subdir invocation for target.
-zed_yolo_node/CMakeFiles/sensor_msgs_generate_messages_lisp.dir/rule: cmake_check_build_system
+map/CMakeFiles/sensor_msgs_generate_messages_lisp.dir/rule: cmake_check_build_system
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/fury/fsd/fsd_ws/build/CMakeFiles 0
-	$(MAKE) -f CMakeFiles/Makefile2 zed_yolo_node/CMakeFiles/sensor_msgs_generate_messages_lisp.dir/all
+	$(MAKE) -f CMakeFiles/Makefile2 map/CMakeFiles/sensor_msgs_generate_messages_lisp.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/fury/fsd/fsd_ws/build/CMakeFiles 0
-.PHONY : zed_yolo_node/CMakeFiles/sensor_msgs_generate_messages_lisp.dir/rule
+.PHONY : map/CMakeFiles/sensor_msgs_generate_messages_lisp.dir/rule
 
 # Convenience name for target.
-sensor_msgs_generate_messages_lisp: zed_yolo_node/CMakeFiles/sensor_msgs_generate_messages_lisp.dir/rule
+sensor_msgs_generate_messages_lisp: map/CMakeFiles/sensor_msgs_generate_messages_lisp.dir/rule
 
 .PHONY : sensor_msgs_generate_messages_lisp
 
 # clean rule for target.
-zed_yolo_node/CMakeFiles/sensor_msgs_generate_messages_lisp.dir/clean:
-	$(MAKE) -f zed_yolo_node/CMakeFiles/sensor_msgs_generate_messages_lisp.dir/build.make zed_yolo_node/CMakeFiles/sensor_msgs_generate_messages_lisp.dir/clean
-.PHONY : zed_yolo_node/CMakeFiles/sensor_msgs_generate_messages_lisp.dir/clean
+map/CMakeFiles/sensor_msgs_generate_messages_lisp.dir/clean:
+	$(MAKE) -f map/CMakeFiles/sensor_msgs_generate_messages_lisp.dir/build.make map/CMakeFiles/sensor_msgs_generate_messages_lisp.dir/clean
+.PHONY : map/CMakeFiles/sensor_msgs_generate_messages_lisp.dir/clean
 
 #=============================================================================
-# Target rules for target zed_yolo_node/CMakeFiles/sensor_msgs_generate_messages_nodejs.dir
+# Target rules for target map/CMakeFiles/sensor_msgs_generate_messages_nodejs.dir
 
 # All Build rule for target.
-zed_yolo_node/CMakeFiles/sensor_msgs_generate_messages_nodejs.dir/all:
-	$(MAKE) -f zed_yolo_node/CMakeFiles/sensor_msgs_generate_messages_nodejs.dir/build.make zed_yolo_node/CMakeFiles/sensor_msgs_generate_messages_nodejs.dir/depend
-	$(MAKE) -f zed_yolo_node/CMakeFiles/sensor_msgs_generate_messages_nodejs.dir/build.make zed_yolo_node/CMakeFiles/sensor_msgs_generate_messages_nodejs.dir/build
+map/CMakeFiles/sensor_msgs_generate_messages_nodejs.dir/all:
+	$(MAKE) -f map/CMakeFiles/sensor_msgs_generate_messages_nodejs.dir/build.make map/CMakeFiles/sensor_msgs_generate_messages_nodejs.dir/depend
+	$(MAKE) -f map/CMakeFiles/sensor_msgs_generate_messages_nodejs.dir/build.make map/CMakeFiles/sensor_msgs_generate_messages_nodejs.dir/build
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/fury/fsd/fsd_ws/build/CMakeFiles --progress-num= "Built target sensor_msgs_generate_messages_nodejs"
-.PHONY : zed_yolo_node/CMakeFiles/sensor_msgs_generate_messages_nodejs.dir/all
+.PHONY : map/CMakeFiles/sensor_msgs_generate_messages_nodejs.dir/all
 
 # Build rule for subdir invocation for target.
-zed_yolo_node/CMakeFiles/sensor_msgs_generate_messages_nodejs.dir/rule: cmake_check_build_system
+map/CMakeFiles/sensor_msgs_generate_messages_nodejs.dir/rule: cmake_check_build_system
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/fury/fsd/fsd_ws/build/CMakeFiles 0
-	$(MAKE) -f CMakeFiles/Makefile2 zed_yolo_node/CMakeFiles/sensor_msgs_generate_messages_nodejs.dir/all
+	$(MAKE) -f CMakeFiles/Makefile2 map/CMakeFiles/sensor_msgs_generate_messages_nodejs.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/fury/fsd/fsd_ws/build/CMakeFiles 0
-.PHONY : zed_yolo_node/CMakeFiles/sensor_msgs_generate_messages_nodejs.dir/rule
+.PHONY : map/CMakeFiles/sensor_msgs_generate_messages_nodejs.dir/rule
 
 # Convenience name for target.
-sensor_msgs_generate_messages_nodejs: zed_yolo_node/CMakeFiles/sensor_msgs_generate_messages_nodejs.dir/rule
+sensor_msgs_generate_messages_nodejs: map/CMakeFiles/sensor_msgs_generate_messages_nodejs.dir/rule
 
 .PHONY : sensor_msgs_generate_messages_nodejs
 
 # clean rule for target.
-zed_yolo_node/CMakeFiles/sensor_msgs_generate_messages_nodejs.dir/clean:
-	$(MAKE) -f zed_yolo_node/CMakeFiles/sensor_msgs_generate_messages_nodejs.dir/build.make zed_yolo_node/CMakeFiles/sensor_msgs_generate_messages_nodejs.dir/clean
-.PHONY : zed_yolo_node/CMakeFiles/sensor_msgs_generate_messages_nodejs.dir/clean
+map/CMakeFiles/sensor_msgs_generate_messages_nodejs.dir/clean:
+	$(MAKE) -f map/CMakeFiles/sensor_msgs_generate_messages_nodejs.dir/build.make map/CMakeFiles/sensor_msgs_generate_messages_nodejs.dir/clean
+.PHONY : map/CMakeFiles/sensor_msgs_generate_messages_nodejs.dir/clean
 
 #=============================================================================
-# Target rules for target zed_yolo_node/CMakeFiles/geometry_msgs_generate_messages_py.dir
+# Target rules for target map/CMakeFiles/geometry_msgs_generate_messages_py.dir
 
 # All Build rule for target.
-zed_yolo_node/CMakeFiles/geometry_msgs_generate_messages_py.dir/all:
-	$(MAKE) -f zed_yolo_node/CMakeFiles/geometry_msgs_generate_messages_py.dir/build.make zed_yolo_node/CMakeFiles/geometry_msgs_generate_messages_py.dir/depend
-	$(MAKE) -f zed_yolo_node/CMakeFiles/geometry_msgs_generate_messages_py.dir/build.make zed_yolo_node/CMakeFiles/geometry_msgs_generate_messages_py.dir/build
+map/CMakeFiles/geometry_msgs_generate_messages_py.dir/all:
+	$(MAKE) -f map/CMakeFiles/geometry_msgs_generate_messages_py.dir/build.make map/CMakeFiles/geometry_msgs_generate_messages_py.dir/depend
+	$(MAKE) -f map/CMakeFiles/geometry_msgs_generate_messages_py.dir/build.make map/CMakeFiles/geometry_msgs_generate_messages_py.dir/build
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/fury/fsd/fsd_ws/build/CMakeFiles --progress-num= "Built target geometry_msgs_generate_messages_py"
-.PHONY : zed_yolo_node/CMakeFiles/geometry_msgs_generate_messages_py.dir/all
+.PHONY : map/CMakeFiles/geometry_msgs_generate_messages_py.dir/all
 
 # Build rule for subdir invocation for target.
-zed_yolo_node/CMakeFiles/geometry_msgs_generate_messages_py.dir/rule: cmake_check_build_system
+map/CMakeFiles/geometry_msgs_generate_messages_py.dir/rule: cmake_check_build_system
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/fury/fsd/fsd_ws/build/CMakeFiles 0
-	$(MAKE) -f CMakeFiles/Makefile2 zed_yolo_node/CMakeFiles/geometry_msgs_generate_messages_py.dir/all
+	$(MAKE) -f CMakeFiles/Makefile2 map/CMakeFiles/geometry_msgs_generate_messages_py.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/fury/fsd/fsd_ws/build/CMakeFiles 0
-.PHONY : zed_yolo_node/CMakeFiles/geometry_msgs_generate_messages_py.dir/rule
+.PHONY : map/CMakeFiles/geometry_msgs_generate_messages_py.dir/rule
 
 # Convenience name for target.
-geometry_msgs_generate_messages_py: zed_yolo_node/CMakeFiles/geometry_msgs_generate_messages_py.dir/rule
+geometry_msgs_generate_messages_py: map/CMakeFiles/geometry_msgs_generate_messages_py.dir/rule
 
 .PHONY : geometry_msgs_generate_messages_py
 
 # clean rule for target.
-zed_yolo_node/CMakeFiles/geometry_msgs_generate_messages_py.dir/clean:
-	$(MAKE) -f zed_yolo_node/CMakeFiles/geometry_msgs_generate_messages_py.dir/build.make zed_yolo_node/CMakeFiles/geometry_msgs_generate_messages_py.dir/clean
-.PHONY : zed_yolo_node/CMakeFiles/geometry_msgs_generate_messages_py.dir/clean
+map/CMakeFiles/geometry_msgs_generate_messages_py.dir/clean:
+	$(MAKE) -f map/CMakeFiles/geometry_msgs_generate_messages_py.dir/build.make map/CMakeFiles/geometry_msgs_generate_messages_py.dir/clean
+.PHONY : map/CMakeFiles/geometry_msgs_generate_messages_py.dir/clean
 
 #=============================================================================
-# Target rules for target zed_yolo_node/CMakeFiles/sensor_msgs_generate_messages_py.dir
+# Target rules for target map/CMakeFiles/sensor_msgs_generate_messages_py.dir
 
 # All Build rule for target.
-zed_yolo_node/CMakeFiles/sensor_msgs_generate_messages_py.dir/all:
-	$(MAKE) -f zed_yolo_node/CMakeFiles/sensor_msgs_generate_messages_py.dir/build.make zed_yolo_node/CMakeFiles/sensor_msgs_generate_messages_py.dir/depend
-	$(MAKE) -f zed_yolo_node/CMakeFiles/sensor_msgs_generate_messages_py.dir/build.make zed_yolo_node/CMakeFiles/sensor_msgs_generate_messages_py.dir/build
+map/CMakeFiles/sensor_msgs_generate_messages_py.dir/all:
+	$(MAKE) -f map/CMakeFiles/sensor_msgs_generate_messages_py.dir/build.make map/CMakeFiles/sensor_msgs_generate_messages_py.dir/depend
+	$(MAKE) -f map/CMakeFiles/sensor_msgs_generate_messages_py.dir/build.make map/CMakeFiles/sensor_msgs_generate_messages_py.dir/build
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/fury/fsd/fsd_ws/build/CMakeFiles --progress-num= "Built target sensor_msgs_generate_messages_py"
-.PHONY : zed_yolo_node/CMakeFiles/sensor_msgs_generate_messages_py.dir/all
+.PHONY : map/CMakeFiles/sensor_msgs_generate_messages_py.dir/all
 
 # Build rule for subdir invocation for target.
-zed_yolo_node/CMakeFiles/sensor_msgs_generate_messages_py.dir/rule: cmake_check_build_system
+map/CMakeFiles/sensor_msgs_generate_messages_py.dir/rule: cmake_check_build_system
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/fury/fsd/fsd_ws/build/CMakeFiles 0
-	$(MAKE) -f CMakeFiles/Makefile2 zed_yolo_node/CMakeFiles/sensor_msgs_generate_messages_py.dir/all
+	$(MAKE) -f CMakeFiles/Makefile2 map/CMakeFiles/sensor_msgs_generate_messages_py.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/fury/fsd/fsd_ws/build/CMakeFiles 0
-.PHONY : zed_yolo_node/CMakeFiles/sensor_msgs_generate_messages_py.dir/rule
+.PHONY : map/CMakeFiles/sensor_msgs_generate_messages_py.dir/rule
 
 # Convenience name for target.
-sensor_msgs_generate_messages_py: zed_yolo_node/CMakeFiles/sensor_msgs_generate_messages_py.dir/rule
+sensor_msgs_generate_messages_py: map/CMakeFiles/sensor_msgs_generate_messages_py.dir/rule
 
 .PHONY : sensor_msgs_generate_messages_py
 
 # clean rule for target.
-zed_yolo_node/CMakeFiles/sensor_msgs_generate_messages_py.dir/clean:
-	$(MAKE) -f zed_yolo_node/CMakeFiles/sensor_msgs_generate_messages_py.dir/build.make zed_yolo_node/CMakeFiles/sensor_msgs_generate_messages_py.dir/clean
-.PHONY : zed_yolo_node/CMakeFiles/sensor_msgs_generate_messages_py.dir/clean
+map/CMakeFiles/sensor_msgs_generate_messages_py.dir/clean:
+	$(MAKE) -f map/CMakeFiles/sensor_msgs_generate_messages_py.dir/build.make map/CMakeFiles/sensor_msgs_generate_messages_py.dir/clean
+.PHONY : map/CMakeFiles/sensor_msgs_generate_messages_py.dir/clean
 
 #=============================================================================
-# Target rules for target zed_yolo_node/CMakeFiles/geometry_msgs_generate_messages_cpp.dir
+# Target rules for target map/CMakeFiles/geometry_msgs_generate_messages_cpp.dir
 
 # All Build rule for target.
-zed_yolo_node/CMakeFiles/geometry_msgs_generate_messages_cpp.dir/all:
-	$(MAKE) -f zed_yolo_node/CMakeFiles/geometry_msgs_generate_messages_cpp.dir/build.make zed_yolo_node/CMakeFiles/geometry_msgs_generate_messages_cpp.dir/depend
-	$(MAKE) -f zed_yolo_node/CMakeFiles/geometry_msgs_generate_messages_cpp.dir/build.make zed_yolo_node/CMakeFiles/geometry_msgs_generate_messages_cpp.dir/build
+map/CMakeFiles/geometry_msgs_generate_messages_cpp.dir/all:
+	$(MAKE) -f map/CMakeFiles/geometry_msgs_generate_messages_cpp.dir/build.make map/CMakeFiles/geometry_msgs_generate_messages_cpp.dir/depend
+	$(MAKE) -f map/CMakeFiles/geometry_msgs_generate_messages_cpp.dir/build.make map/CMakeFiles/geometry_msgs_generate_messages_cpp.dir/build
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/fury/fsd/fsd_ws/build/CMakeFiles --progress-num= "Built target geometry_msgs_generate_messages_cpp"
-.PHONY : zed_yolo_node/CMakeFiles/geometry_msgs_generate_messages_cpp.dir/all
+.PHONY : map/CMakeFiles/geometry_msgs_generate_messages_cpp.dir/all
 
 # Build rule for subdir invocation for target.
-zed_yolo_node/CMakeFiles/geometry_msgs_generate_messages_cpp.dir/rule: cmake_check_build_system
+map/CMakeFiles/geometry_msgs_generate_messages_cpp.dir/rule: cmake_check_build_system
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/fury/fsd/fsd_ws/build/CMakeFiles 0
-	$(MAKE) -f CMakeFiles/Makefile2 zed_yolo_node/CMakeFiles/geometry_msgs_generate_messages_cpp.dir/all
+	$(MAKE) -f CMakeFiles/Makefile2 map/CMakeFiles/geometry_msgs_generate_messages_cpp.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/fury/fsd/fsd_ws/build/CMakeFiles 0
-.PHONY : zed_yolo_node/CMakeFiles/geometry_msgs_generate_messages_cpp.dir/rule
+.PHONY : map/CMakeFiles/geometry_msgs_generate_messages_cpp.dir/rule
 
 # Convenience name for target.
-geometry_msgs_generate_messages_cpp: zed_yolo_node/CMakeFiles/geometry_msgs_generate_messages_cpp.dir/rule
+geometry_msgs_generate_messages_cpp: map/CMakeFiles/geometry_msgs_generate_messages_cpp.dir/rule
 
 .PHONY : geometry_msgs_generate_messages_cpp
 
 # clean rule for target.
-zed_yolo_node/CMakeFiles/geometry_msgs_generate_messages_cpp.dir/clean:
-	$(MAKE) -f zed_yolo_node/CMakeFiles/geometry_msgs_generate_messages_cpp.dir/build.make zed_yolo_node/CMakeFiles/geometry_msgs_generate_messages_cpp.dir/clean
-.PHONY : zed_yolo_node/CMakeFiles/geometry_msgs_generate_messages_cpp.dir/clean
+map/CMakeFiles/geometry_msgs_generate_messages_cpp.dir/clean:
+	$(MAKE) -f map/CMakeFiles/geometry_msgs_generate_messages_cpp.dir/build.make map/CMakeFiles/geometry_msgs_generate_messages_cpp.dir/clean
+.PHONY : map/CMakeFiles/geometry_msgs_generate_messages_cpp.dir/clean
 
 #=============================================================================
-# Target rules for target zed_yolo_node/CMakeFiles/geometry_msgs_generate_messages_nodejs.dir
+# Target rules for target map/CMakeFiles/geometry_msgs_generate_messages_nodejs.dir
 
 # All Build rule for target.
-zed_yolo_node/CMakeFiles/geometry_msgs_generate_messages_nodejs.dir/all:
-	$(MAKE) -f zed_yolo_node/CMakeFiles/geometry_msgs_generate_messages_nodejs.dir/build.make zed_yolo_node/CMakeFiles/geometry_msgs_generate_messages_nodejs.dir/depend
-	$(MAKE) -f zed_yolo_node/CMakeFiles/geometry_msgs_generate_messages_nodejs.dir/build.make zed_yolo_node/CMakeFiles/geometry_msgs_generate_messages_nodejs.dir/build
+map/CMakeFiles/geometry_msgs_generate_messages_nodejs.dir/all:
+	$(MAKE) -f map/CMakeFiles/geometry_msgs_generate_messages_nodejs.dir/build.make map/CMakeFiles/geometry_msgs_generate_messages_nodejs.dir/depend
+	$(MAKE) -f map/CMakeFiles/geometry_msgs_generate_messages_nodejs.dir/build.make map/CMakeFiles/geometry_msgs_generate_messages_nodejs.dir/build
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/fury/fsd/fsd_ws/build/CMakeFiles --progress-num= "Built target geometry_msgs_generate_messages_nodejs"
-.PHONY : zed_yolo_node/CMakeFiles/geometry_msgs_generate_messages_nodejs.dir/all
+.PHONY : map/CMakeFiles/geometry_msgs_generate_messages_nodejs.dir/all
 
 # Build rule for subdir invocation for target.
-zed_yolo_node/CMakeFiles/geometry_msgs_generate_messages_nodejs.dir/rule: cmake_check_build_system
+map/CMakeFiles/geometry_msgs_generate_messages_nodejs.dir/rule: cmake_check_build_system
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/fury/fsd/fsd_ws/build/CMakeFiles 0
-	$(MAKE) -f CMakeFiles/Makefile2 zed_yolo_node/CMakeFiles/geometry_msgs_generate_messages_nodejs.dir/all
+	$(MAKE) -f CMakeFiles/Makefile2 map/CMakeFiles/geometry_msgs_generate_messages_nodejs.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/fury/fsd/fsd_ws/build/CMakeFiles 0
-.PHONY : zed_yolo_node/CMakeFiles/geometry_msgs_generate_messages_nodejs.dir/rule
+.PHONY : map/CMakeFiles/geometry_msgs_generate_messages_nodejs.dir/rule
 
 # Convenience name for target.
-geometry_msgs_generate_messages_nodejs: zed_yolo_node/CMakeFiles/geometry_msgs_generate_messages_nodejs.dir/rule
+geometry_msgs_generate_messages_nodejs: map/CMakeFiles/geometry_msgs_generate_messages_nodejs.dir/rule
 
 .PHONY : geometry_msgs_generate_messages_nodejs
 
 # clean rule for target.
-zed_yolo_node/CMakeFiles/geometry_msgs_generate_messages_nodejs.dir/clean:
-	$(MAKE) -f zed_yolo_node/CMakeFiles/geometry_msgs_generate_messages_nodejs.dir/build.make zed_yolo_node/CMakeFiles/geometry_msgs_generate_messages_nodejs.dir/clean
-.PHONY : zed_yolo_node/CMakeFiles/geometry_msgs_generate_messages_nodejs.dir/clean
+map/CMakeFiles/geometry_msgs_generate_messages_nodejs.dir/clean:
+	$(MAKE) -f map/CMakeFiles/geometry_msgs_generate_messages_nodejs.dir/build.make map/CMakeFiles/geometry_msgs_generate_messages_nodejs.dir/clean
+.PHONY : map/CMakeFiles/geometry_msgs_generate_messages_nodejs.dir/clean
 
 #=============================================================================
 # Special targets to cleanup operation of make.
